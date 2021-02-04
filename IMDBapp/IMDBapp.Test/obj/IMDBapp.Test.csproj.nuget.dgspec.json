@@ -1,0 +1,273 @@
+{
+  "format": 1,
+  "restore": {
+    "C:\\Users\\lenovo\\Desktop\\DeltaX\\deltax_assignments\\IMDBapp\\IMDBapp.Test\\IMDBapp.Test.csproj": {}
+  },
+  "projects": {
+    "C:\\Users\\lenovo\\Desktop\\DeltaX\\deltax_assignments\\IMDBapp\\IMDBapp.Domain\\IMDBapp.Domain.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\lenovo\\Desktop\\DeltaX\\deltax_assignments\\IMDBapp\\IMDBapp.Domain\\IMDBapp.Domain.csproj",
+        "projectName": "IMDBapp.Domain",
+        "projectPath": "C:\\Users\\lenovo\\Desktop\\DeltaX\\deltax_assignments\\IMDBapp\\IMDBapp.Domain\\IMDBapp.Domain.csproj",
+        "packagesPath": "C:\\Users\\lenovo\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\lenovo\\Desktop\\DeltaX\\deltax_assignments\\IMDBapp\\IMDBapp.Domain\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\lenovo\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.1": {
+            "targetAlias": "netcoreapp3.1",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "targetAlias": "netcoreapp3.1",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.102\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\lenovo\\Desktop\\DeltaX\\deltax_assignments\\IMDBapp\\IMDBapp.Repository\\IMDBapp.Repository.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\lenovo\\Desktop\\DeltaX\\deltax_assignments\\IMDBapp\\IMDBapp.Repository\\IMDBapp.Repository.csproj",
+        "projectName": "IMDBapp.Repository",
+        "projectPath": "C:\\Users\\lenovo\\Desktop\\DeltaX\\deltax_assignments\\IMDBapp\\IMDBapp.Repository\\IMDBapp.Repository.csproj",
+        "packagesPath": "C:\\Users\\lenovo\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\lenovo\\Desktop\\DeltaX\\deltax_assignments\\IMDBapp\\IMDBapp.Repository\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\lenovo\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.1": {
+            "targetAlias": "netcoreapp3.1",
+            "projectReferences": {
+              "C:\\Users\\lenovo\\Desktop\\DeltaX\\deltax_assignments\\IMDBapp\\IMDBapp.Domain\\IMDBapp.Domain.csproj": {
+                "projectPath": "C:\\Users\\lenovo\\Desktop\\DeltaX\\deltax_assignments\\IMDBapp\\IMDBapp.Domain\\IMDBapp.Domain.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "targetAlias": "netcoreapp3.1",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.102\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\lenovo\\Desktop\\DeltaX\\deltax_assignments\\IMDBapp\\IMDBapp.Test\\IMDBapp.Test.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\lenovo\\Desktop\\DeltaX\\deltax_assignments\\IMDBapp\\IMDBapp.Test\\IMDBapp.Test.csproj",
+        "projectName": "IMDBapp.Test",
+        "projectPath": "C:\\Users\\lenovo\\Desktop\\DeltaX\\deltax_assignments\\IMDBapp\\IMDBapp.Test\\IMDBapp.Test.csproj",
+        "packagesPath": "C:\\Users\\lenovo\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\lenovo\\Desktop\\DeltaX\\deltax_assignments\\IMDBapp\\IMDBapp.Test\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\lenovo\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.1": {
+            "targetAlias": "netcoreapp3.1",
+            "projectReferences": {
+              "C:\\Users\\lenovo\\Desktop\\DeltaX\\deltax_assignments\\IMDBapp\\IMDBapp.Domain\\IMDBapp.Domain.csproj": {
+                "projectPath": "C:\\Users\\lenovo\\Desktop\\DeltaX\\deltax_assignments\\IMDBapp\\IMDBapp.Domain\\IMDBapp.Domain.csproj"
+              },
+              "C:\\Users\\lenovo\\Desktop\\DeltaX\\deltax_assignments\\IMDBapp\\IMDBapp.Repository\\IMDBapp.Repository.csproj": {
+                "projectPath": "C:\\Users\\lenovo\\Desktop\\DeltaX\\deltax_assignments\\IMDBapp\\IMDBapp.Repository\\IMDBapp.Repository.csproj"
+              },
+              "C:\\Users\\lenovo\\Desktop\\DeltaX\\deltax_assignments\\IMDBapp\\IMDBapp\\IMDBapp.csproj": {
+                "projectPath": "C:\\Users\\lenovo\\Desktop\\DeltaX\\deltax_assignments\\IMDBapp\\IMDBapp\\IMDBapp.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "targetAlias": "netcoreapp3.1",
+          "dependencies": {
+            "Microsoft.NET.Test.Sdk": {
+              "target": "Package",
+              "version": "[16.8.3, )"
+            },
+            "SpecFlow": {
+              "target": "Package",
+              "version": "[3.6.23, )"
+            },
+            "SpecFlow.Tools.MsBuild.Generation": {
+              "target": "Package",
+              "version": "[3.6.23, )"
+            },
+            "SpecFlow.xUnit": {
+              "target": "Package",
+              "version": "[3.6.23, )"
+            },
+            "xunit": {
+              "target": "Package",
+              "version": "[2.4.1, )"
+            },
+            "xunit.runner.visualstudio": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.4.3, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.102\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\lenovo\\Desktop\\DeltaX\\deltax_assignments\\IMDBapp\\IMDBapp\\IMDBapp.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\lenovo\\Desktop\\DeltaX\\deltax_assignments\\IMDBapp\\IMDBapp\\IMDBapp.csproj",
+        "projectName": "IMDBapp",
+        "projectPath": "C:\\Users\\lenovo\\Desktop\\DeltaX\\deltax_assignments\\IMDBapp\\IMDBapp\\IMDBapp.csproj",
+        "packagesPath": "C:\\Users\\lenovo\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\lenovo\\Desktop\\DeltaX\\deltax_assignments\\IMDBapp\\IMDBapp\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\lenovo\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.1": {
+            "targetAlias": "netcoreapp3.1",
+            "projectReferences": {
+              "C:\\Users\\lenovo\\Desktop\\DeltaX\\deltax_assignments\\IMDBapp\\IMDBapp.Domain\\IMDBapp.Domain.csproj": {
+                "projectPath": "C:\\Users\\lenovo\\Desktop\\DeltaX\\deltax_assignments\\IMDBapp\\IMDBapp.Domain\\IMDBapp.Domain.csproj"
+              },
+              "C:\\Users\\lenovo\\Desktop\\DeltaX\\deltax_assignments\\IMDBapp\\IMDBapp.Repository\\IMDBapp.Repository.csproj": {
+                "projectPath": "C:\\Users\\lenovo\\Desktop\\DeltaX\\deltax_assignments\\IMDBapp\\IMDBapp.Repository\\IMDBapp.Repository.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "targetAlias": "netcoreapp3.1",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.102\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}
