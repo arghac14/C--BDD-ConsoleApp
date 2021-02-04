@@ -7,40 +7,40 @@ namespace IMDBapp.Repository
 {
     public class MovieRepository
     {
-        public List<Movies> _movies;
-        public List<Actors> _actors;
-        public List<Producers> _producers;
+        public List<Movie> _movies;
+        public List<Actor> _actors;
+        public List<Producer> _producers;
 
         public MovieRepository()
         {
-            _movies = new List<Movies>();
-            _actors = new List<Actors>();
-            _producers = new List<Producers>();
+            _movies = new List<Movie>();
+            _actors = new List<Actor>();
+            _producers = new List<Producer>();
         }
         
-        public void AddMovieData(Movies movie)
+        public void AddMovieData(Movie movie)
         {
             _movies.Add(movie);
         }
-        public List<Movies> GetMoviesData()
+        public List<Movie> GetMoviesData()
         {
             return _movies.ToList();
         }
 
-        public void AddActorData(Actors actor)
+        public void AddActorData(Actor actor)
         {
             _actors.Add(actor);
         }
-        public List<Actors> GetActorsData()
+        public List<Actor> GetActorsData()
         {
             return _actors.ToList();
         }
 
-        public void AddProducerData(Producers producer)
+        public void AddProducerData(Producer producer)
         {
             _producers.Add(producer);
         }
-        public List<Producers> GetProducersData()
+        public List<Producer> GetProducersData()
         {
             return _producers.ToList();
         }

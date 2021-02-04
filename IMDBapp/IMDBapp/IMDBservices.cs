@@ -19,7 +19,7 @@ namespace IMDBapp
         }
         
         // Movies
-        public void AddMovie(string name, string year, string plot, List<Actors> actors, Producers producer)
+        public void AddMovie(string name, string year, string plot, List<Actor> actors, Producer producer)
         {
             
             if (string.IsNullOrEmpty(name))
@@ -27,15 +27,9 @@ namespace IMDBapp
                 throw new ArgumentException("Movie name can't be empty!");
             }
 
-            DateTime dDate;
-
-            if (DateTime.TryParse(year, out dDate))
+            if (Convert.ToInt32(year) < 1000 || Convert.ToInt32(year) > 2021)
             {
-                String.Format("{0:d/MM/yyyy}", dDate);
-            }
-            else
-            {
-                throw new Exception("Invalid Date!");
+                throw new Exception("Invalid Year!");
             }
 
             if (string.IsNullOrEmpty(plot))
@@ -48,12 +42,8 @@ namespace IMDBapp
                 throw new ArgumentException("Invalid choice of Actor!");
             }
 
-            //if (string.IsNullOrEmpty(producer))
-            //{
-            //    throw new ArgumentException("Invalid choice of Producer!");
-            //}
 
-            Movies movie = new Movies()
+            Movie movie = new Movie()
             {
                 Name = name,
                 Year = year,
@@ -65,7 +55,7 @@ namespace IMDBapp
             _movieRepository.AddMovieData(movie);
         }
 
-        public List<Movies> GetAllMovies()
+        public List<Movie> GetAllMovies()
         {
             return _movieRepository.GetMoviesData();
         }
@@ -92,16 +82,16 @@ namespace IMDBapp
             }
 
 
-            Actors actor = new Actors()
+            Actor actor = new Actor()
             {
-                ActorName = actorName,
-                ActorDOB = actorDob
+                Name = actorName,
+                DOB = actorDob
             };
 
             _movieRepository.AddActorData(actor);
         }
 
-        public List<Actors> GetAllActors()
+        public List<Actor> GetAllActors()
         {
             return _movieRepository.GetActorsData();
         }
@@ -128,15 +118,15 @@ namespace IMDBapp
             }
 
 
-            Producers producer = new Producers()
+            Producer producer = new Producer()
             {
-                ProducerName = producerName,
-                ProducerDOB = producerDob
+                Name = producerName,
+                DOB = producerDob
             };
             _movieRepository.AddProducerData(producer);
         }
 
-        public List<Producers> GetAllProducers()
+        public List<Producer> GetAllProducers()
         {
             return _movieRepository.GetProducersData();
         }
@@ -154,21 +144,20 @@ namespace IMDBapp
             }
         }
 
-
-        //public void DeleteByName(string movieName)
-        //{
-        //    List<Movies> targetMovies = new List<Movies>();
-        //    targetMovies = _movieRepository._movies.FindAll(x => x.Name == movieName);
-        //    if (!targetMovies.Any())
-        //    {
-        //        Console.WriteLine("No such movie exists in database!");
-        //    }
-        //    else
-        //    {
-        //        _movieRepository._movies.RemoveAll(x => x.Name == movieName);
-        //        Console.WriteLine("Movie Deleted!");
-        //    }
-        //}
+        public void DeleteByName(string movieName)
+        {
+            List<Movie> targetMovies = new List<Movie>();
+            targetMovies = _movieRepository._movies.FindAll(x => x.Name == movieName);
+            if (!targetMovies.Any())
+            {
+                Console.WriteLine("No such movie exists in database!");
+            }
+            else
+            {
+                _movieRepository._movies.RemoveAll(x => x.Name == movieName);
+                Console.WriteLine("Movie Deleted!");
+            }
+        }
 
     }
 }

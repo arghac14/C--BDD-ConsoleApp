@@ -17,27 +17,27 @@ namespace IMDBapp
             Console.ForegroundColor = ConsoleColor.White;
         }
 
-        static List<Actors> AllActors(IMDBservices imdb)
+        static List<Actor> AllActors(IMDBservices imdb)
         {
             int i = 1;
-            foreach (var actor in imdb.GetAllActors())
+            imdb.GetAllActors().ForEach(actor =>
             {
-                Console.WriteLine("    {0}     {1}", i, actor.ActorName);
+                Console.WriteLine("    {0}     {1}", i, actor.Name);
                 i += 1;
-            }
-           
+            });
+
             return imdb.GetAllActors();
         }
 
-        static List<Producers> AllProducers(IMDBservices imdb)
+        static List<Producer> AllProducers(IMDBservices imdb)
         {
             int i = 1;
-            foreach (var producer in imdb.GetAllProducers())
+            imdb.GetAllProducers().ForEach(producer =>
             {
-                Console.WriteLine("    {0}      {1}", i, producer.ProducerName);
+                Console.WriteLine("    {0}      {1}", i, producer.Name);
                 i += 1;
-            }
-            
+            });
+
             return imdb.GetAllProducers();
         }
 
@@ -45,8 +45,8 @@ namespace IMDBapp
         {
 
             string movieName, year, plot;
-            List<Actors> actors = new List<Actors>();
-            Producers producers;
+            List<Actor> actors = new List<Actor>();
+            Producer producers;
 
             Console.Write("\nName: ");
             movieName = Console.ReadLine();
@@ -59,7 +59,7 @@ namespace IMDBapp
                 return;
             }
 
-            Console.Write("\nYear of Release (dd/mm/yy): ");
+            Console.Write("\nYear of Release (yyyy): ");
             year = Console.ReadLine();
 
             if (string.IsNullOrEmpty(year))
@@ -69,19 +69,14 @@ namespace IMDBapp
                 return;
             }
 
-            DateTime dDate;
-    
-            if (DateTime.TryParse(year, out dDate))
+
+            if (Convert.ToInt32(year) < 1000 || Convert.ToInt32(year) > 2021)
             {
-                 String.Format("{0:d/MM/yyyy}", dDate);
-            }
-            
-            else
-            {
-                Console.WriteLine("\nInvalid Date!");
+                ChangeConsoleColour();
+                Console.WriteLine("\nInvalid Year!");
                 return;
             }
-
+           
             Console.Write("\nPlot: ");
             plot = Console.ReadLine();
 
@@ -95,7 +90,7 @@ namespace IMDBapp
             // Taking Actors' list
             Console.WriteLine("\nActors' List: ");
 
-            List<Actors> temp_actors_obj;
+            List<Actor> temp_actors_obj;
             temp_actors_obj = AllActors(imdb);
 
             if (!temp_actors_obj.Any())
@@ -106,7 +101,7 @@ namespace IMDBapp
             }
 
             List<String> temp_actors;
-            temp_actors = temp_actors_obj.Select(x => x.ActorName).ToList();
+            temp_actors = temp_actors_obj.Select(x => x.Name).ToList();
 
             Console.Write("\nChoose Actors (By Sl. no.): ");
             List<string> actorList = new List<string>();
@@ -129,7 +124,7 @@ namespace IMDBapp
                 return;
             }
 
-            foreach (var i in actorList)
+            actorList.ForEach(i =>
             {
                 if (Convert.ToInt32(i) > temp_actors_obj.Count || Convert.ToInt32(i) < 1)
                 {
@@ -139,19 +134,19 @@ namespace IMDBapp
                 }
 
                 actorsindex.Add(Convert.ToInt32(i));
-            }
+            });
 
-            foreach (var i in actorsindex)
+            actorsindex.ForEach(i =>
             {
                 actors.Add(temp_actors_obj[i - 1]);
-            }
+            });
 
             //Taking Producer
 
             int producerIndex;
             Console.WriteLine("Producers' list");
 
-            List<Producers> temp_producers_obj;
+            List<Producer> temp_producers_obj;
             temp_producers_obj = AllProducers(imdb);
 
 
@@ -163,7 +158,7 @@ namespace IMDBapp
             }
 
             List<String> temp_producers;
-            temp_producers = temp_producers_obj.Select(x => x.ProducerName).ToList();
+            temp_producers = temp_producers_obj.Select(x => x.Name).ToList();
 
             Console.Write("\nChoose a producer (By Sl. no.): ");
             var producerInput = Console.ReadLine();
@@ -186,6 +181,8 @@ namespace IMDBapp
             producers = temp_producers_obj[producerIndex - 1];
 
             imdb.AddMovie(movieName, year, plot, actors, producers);
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine("\nData Added!");
 
         }
 
@@ -198,6 +195,8 @@ namespace IMDBapp
             Console.Write("Actor's Date of Birth(dd/mm/yyyy): ");
             actorDOB = Console.ReadLine();
             imdb.AddActor(actorName, actorDOB);
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine("\nData Added!");
         }
 
         public static void AddProducerToIMDB(IMDBservices imdb)
@@ -209,24 +208,35 @@ namespace IMDBapp
             Console.Write("Producer's Date of Birth(dd/mm/yyyy): ");
             producerDOB = Console.ReadLine();
             imdb.AddProducer(producerName, producerDOB);
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine("\nData Added!");
 
         }
 
         public static void ListMovies(IMDBservices imdb)
         {
             int id = 1;
-            Console.WriteLine("\n ID\t Movie \t\t\t Release Date  \tPlot\t\t\tProducer \t Actors \t ");
-            foreach (var movie in imdb.GetAllMovies())
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.WriteLine("\n ID\t Movie \t\t\t Release Year  \tPlot\t\t\tProducer \t Actors \t \n");
+            ResetConsoleColour();
+            if (!imdb.GetAllMovies().Any())
             {
-                Console.Write(" {0}\t {1} \t {2}  \t{3}\t", id, movie.Name, movie.Year, movie.Plot);
-                Console.Write(movie.Producer.ProducerName + "\t");
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("\nNo movies in database!");
+                return;
+            }
+
+            imdb.GetAllMovies().ForEach(movie =>
+            {
+                Console.Write(" {0}\t {1} \t\t {2}  \t\t{3}\t\t", id, movie.Name, movie.Year, movie.Plot);
+                Console.Write(movie.Producer.Name + "\t");
                 foreach (var actor in movie.Actors.ToList())
                 {
-                    Console.Write("{0}, ", actor.ActorName);
+                    Console.Write("{0}, ", actor.Name);
                 }
                 id += 1;
                 Console.WriteLine();
-            }
+            });
         }
 
         public static void DeleteMovie(IMDBservices imdb)
@@ -235,6 +245,8 @@ namespace IMDBapp
             Console.Write("\nEnter the ID of the movie that you want to delete from IMDB database: ");
             int movieID = Convert.ToInt32(Console.ReadLine());
             imdb.DeleteByID(movieID);
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine("\nData deleted!");
         }
 
         static void Main(string[] args)
@@ -243,41 +255,17 @@ namespace IMDBapp
             int choice;
             IMDBservices imdb = new IMDBservices();
 
-
-            // Adding few sample data
-            imdb.AddActor("Matt Damon", "01/01/1980");
-            imdb.AddActor("Christian Bale","01/01/1975");
-            imdb.AddProducer("James Mangold", "01/01/1985");
-            imdb.AddProducer("PC1", "03/03/2001");
-            var movie = "Ford vs Ferrari";
-            var year = "01/01/2019";
-            var plot = "American Car Movie";
-            var actors = new List<Actors>();
-            var actor1 = new Actors();
-            actor1.ActorName = "M Damon";
-            actor1.ActorDOB = "01/01/1980";
-            var actor2 = new Actors();
-            actor2.ActorName = "C Bale";
-            actor2.ActorDOB = "01/01/1975";
-            actors.Add(actor1);
-            actors.Add(actor2);
-            var producer = new Producers();
-            producer.ProducerName = "J Mangold";
-            producer.ProducerDOB = "01/01/1985";
-            imdb.AddMovie(movie,year,plot,actors,producer);
-           
-            
             while (true)
             {
                 Console.ForegroundColor = ConsoleColor.White;
-                Console.WriteLine("\n|_____________IMDB________________|");
-                Console.WriteLine("|          1. Add Movie           |");
-                Console.WriteLine("|          2. List Movies         |");
-                Console.WriteLine("|          3. Add Actor           |");
-                Console.WriteLine("|          4. Add Producer        |");
-                Console.WriteLine("|          5. Delete Movie        |");
-                Console.WriteLine("|          6. Exit                |");
-                Console.WriteLine("|_________________________________|");
+                Console.WriteLine("\t\t\t\t\t|_____________IMDB________________|");
+                Console.WriteLine("\t\t\t\t\t|          1. Add Movie           |");
+                Console.WriteLine("\t\t\t\t\t|          2. List Movies         |");
+                Console.WriteLine("\t\t\t\t\t|          3. Add Actor           |");
+                Console.WriteLine("\t\t\t\t\t|          4. Add Producer        |");
+                Console.WriteLine("\t\t\t\t\t|          5. Delete Movie        |");
+                Console.WriteLine("\t\t\t\t\t|          6. Exit                |");
+                Console.WriteLine("\t\t\t\t\t|_________________________________|");
                 Console.Write("\nChoose any option and press Enter: ");
 
                 choice = Convert.ToInt32(Console.ReadLine());

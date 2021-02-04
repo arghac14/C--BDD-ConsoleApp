@@ -16,19 +16,21 @@ namespace IMDBapp.Test
         private IMDBservices _imdbservice;
 
         private string _movieName, _year, _plot;
-        private List<Actors> _actors;
-        private Producers _producers;
+        private List<Actor> _actors;
+        private Producer _producers;
 
-        public List<Movies> movieList = new List<Movies>();
-        public List<Actors> actorList = new List<Actors>();
-        public Producers producerList = new Producers();
+        public List<Movie> movieList = new List<Movie>();
+        public List<Actor> actorList = new List<Actor>();
+        public Producer producerList = new Producer();
 
+        List<ActorToMovie> actorToMovie;
+        List<ProducerToMovie> producerToMovie;
 
         public IMDBAppFeaturesSteps()
         {
             _imdbservice = new IMDBservices();
-            _actors = new List<Actors>();
-            _producers = new Producers();
+            _actors = new List<Actor>();
+            _producers = new Producer();
 
         }
 
@@ -59,19 +61,6 @@ namespace IMDBapp.Test
             _plot = plot;
         }
 
-        //[Given(@"actor list is-")]
-        //public void GivenActorListIs_(Table table)
-        //{
-        //    _actors = table.CreateSet<Actors>().ToList();
-        //}
-
-        //[Given(@"producer list is-")]
-        //public void GivenProducerListIs_(Table table)
-        //{
-        //    _producers = table.CreateInstance<Producers>();
-
-        //}
-
         [Given(@"actor list is ""(.*)""")]
         public void GivenActorListIs(string actorIndices)
         {
@@ -88,7 +77,6 @@ namespace IMDBapp.Test
             }
 
         }
-
 
         [Given(@"producer list is ""(.*)""")]
         public void GivenProducerListIs(int producerIndex)
@@ -110,23 +98,101 @@ namespace IMDBapp.Test
         public void Adding()
         {
             // Adding Test Data for Checking 'list-movies' scenario
-            var _movieName = "Ford vs Ferrari";
-            var _year = "01/01/2019";
-            var _plot = "American Car Movie";
-            List<Actors> _actors = new List<Actors>();
-            var _actor1 = new Actors();
-            _actor1.ActorName = "Matt Damon";
-            _actor1.ActorDOB = "01/01/1980";
-            var _actor2 = new Actors();
-            _actor2.ActorName = "Christian Bale";
-            _actor2.ActorDOB = "01/01/1975";
-            _actors.Add(_actor1);
-            _actors.Add(_actor2);
-            var _producer = new Producers();
-            _producer.ProducerName = "James Mangold";
-            _producer.ProducerDOB = "01/01/1985";
+            var _movieName1 = "Ford vs Ferrari";
+            var _year1 = "2019";
+            var _plot1 = "American Car Movie";
+            List<Actor> _actors1 = new List<Actor>();
+            var _actor1 = new Actor()
+            {
+                Name = "Matt Damon",
+                DOB = "01/01/1980"
+            };
+            var _actor2 = new Actor()
+            {
+                Name = "Christian Bale",
+                DOB = "01/01/1975"
+             };
 
-            _imdbservice.AddMovie(_movieName, _year, _plot, _actors, _producer);
+            _actors1.Add(_actor1);
+            _actors1.Add(_actor2);
+
+            var _producer1 = new Producer()
+            {
+                Name = "James Mangold",
+                DOB = "01/01/1985"
+            };
+
+            _imdbservice.AddMovie(_movieName1, _year1, _plot1, _actors1, _producer1);
+
+            var _movieName2 = "Avengers";
+            var _year2 = "2019";
+            var _plot2 = "American Sci-Fi Movie";
+            List<Actor> _actors2 = new List<Actor>();
+            var _actor3 = new Actor()
+            {
+                Name = "RDJ",
+                DOB = "01/01/1980"
+            };
+            var _actor4 = new Actor()
+            {
+                Name = "Chris Evans",
+                DOB = "01/01/1975"
+            };
+
+            _actors2.Add(_actor1);
+            _actors2.Add(_actor2);
+
+            var _producer2 = new Producer()
+            {
+                Name = "Kevin Feigi",
+                DOB = "01/01/1985"
+            };
+
+            _imdbservice.AddMovie(_movieName2, _year2, _plot2, _actors2, _producer2);
+
+            ActorToMovie _actortomovie1 = new ActorToMovie()
+            {
+                Actor = _actor1.Name,
+                DOB = _actor1.DOB,
+                Movie = _movieName1
+            };
+
+            ActorToMovie _actortomovie2 = new ActorToMovie()
+            {
+                Actor = _actor2.Name,
+                DOB = _actor2.DOB,
+                Movie = _movieName1
+            };
+            ActorToMovie _actortomovie3 = new ActorToMovie()
+            {
+                Actor = _actor3.Name,
+                DOB = _actor3.DOB,
+                Movie = _movieName2
+            };
+            ActorToMovie _actortomovie4 = new ActorToMovie()
+            {
+                Actor = _actor4.Name,
+                DOB = _actor4.DOB,
+                Movie = _movieName2
+            };
+
+            ProducerToMovie _producertomovie1 = new ProducerToMovie()
+            {
+                Producer = _producer1.Name,
+                DOB = _producer1.DOB,
+                Movie = _movieName1
+            };
+
+            ProducerToMovie _producertomovie2 = new ProducerToMovie()
+            {
+                Producer = _producer2.Name,
+                DOB = _producer2.DOB,
+                Movie = _movieName2
+            };
+
+            actorToMovie = new List<ActorToMovie> { _actortomovie1, _actortomovie2, _actortomovie3, _actortomovie4 };
+            producerToMovie = new List<ProducerToMovie> { _producertomovie1, _producertomovie2};
+
         }
 
         [When(@"all movies are fetched")]
@@ -149,11 +215,28 @@ namespace IMDBapp.Test
             table.CompareToSet(actorList);
         }
 
+        [Then(@"actor list should show-")]
+        public void ThenActorListShouldShow_(Table table)
+        {
+
+            var actorList = _imdbservice.GetAllMovies().Select(x => x.Actors).ToList().Last();
+            table.CompareToSet(actorToMovie);
+        }
+
         [Then(@"producer list should be-")]
         public void ThenProducerListShouldBe_(Table table)
         {
             var producerList = _imdbservice.GetAllMovies().Select(x => x.Producer).ToList();
             table.CompareToSet(producerList);
         }
+       
+        [Then(@"producer list should show-")]
+        public void ThenProducerListShouldShow_(Table table)
+        {
+            var producerList = _imdbservice.GetAllMovies().Select(x => x.Producer).ToList();
+            table.CompareToSet(producerToMovie);
+
+        }
+
     }
 }
