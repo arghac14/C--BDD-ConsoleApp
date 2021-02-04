@@ -190,10 +190,27 @@ namespace IMDBapp
         {
             string actorName;
             string actorDOB;
+
             Console.Write("\nActor's Name: ");
             actorName = Console.ReadLine();
+
+            if (string.IsNullOrEmpty(actorName))
+            {
+                ChangeConsoleColour();
+                Console.WriteLine("\nActor name can't be empty!");
+                return;
+            }
+
             Console.Write("Actor's Date of Birth(dd/mm/yyyy): ");
             actorDOB = Console.ReadLine();
+
+            if (string.IsNullOrEmpty(actorDOB))
+            {
+                ChangeConsoleColour();
+                Console.WriteLine("\nActor's DOB can't be empty!");
+                return;
+            }
+
             imdb.AddActor(actorName, actorDOB);
             Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine("\nData Added!");
@@ -203,10 +220,28 @@ namespace IMDBapp
         {
             string producerName;
             string producerDOB;
+
             Console.Write("\nProducer's Name: ");
             producerName = Console.ReadLine();
+
+            if (string.IsNullOrEmpty(producerName))
+            {
+                ChangeConsoleColour();
+                Console.WriteLine("\nProducer name can't be empty!");
+                return;
+            }
+
+
             Console.Write("Producer's Date of Birth(dd/mm/yyyy): ");
             producerDOB = Console.ReadLine();
+
+            if (string.IsNullOrEmpty(producerDOB))
+            {
+                ChangeConsoleColour();
+                Console.WriteLine("\nProducer's DOB can't be empty!");
+                return;
+            }
+
             imdb.AddProducer(producerName, producerDOB);
             Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine("\nData Added!");

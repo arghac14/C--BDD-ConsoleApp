@@ -12,13 +12,14 @@ Scenario: Add movie to list
 	Then movie list should be-
 	| Name            | Year         | Plot         |
 	| Ford vs Ferrari | 2019   | American Car Movie |
+	Then producer list should be-
+	| Name          |  DOB        |
+	| James Mangold | 01/01/1980  |
 	Then actor list should be-
 	| Name           | DOB        |
 	| Matt Damon     | 01/01/1980 |
-	| Christian Bale | 01/01/1975 |
-	Then producer list should be-
-	| Name          |  DOB        |
-	| James Mangold | 01/01/1985  |
+	| Christian Bale | 01/01/1980 |
+	
 
 @list-movies
 Scenario: List all movies
@@ -30,12 +31,12 @@ Scenario: List all movies
 
 	Then producer list should show-
 	| Producer          | DOB        | Movie       |
-	| James Mangold | 01/01/1985 | Ford vs Ferrari |
-	| Kevin Feigi   | 01/01/1985 | Avengers        |
+	| James Mangold | 01/01/1980 | Ford vs Ferrari |
+	| Kevin Feigi   | 01/01/1980 | Avengers        |
 	
 	Then actor list should show-
 	| Actor          | DOB        | Movie            |
 	| Matt Damon     | 01/01/1980 | Ford vs Ferrari  |
-	| Christian Bale | 01/01/1975 | Ford vs Ferrari  |
+	| Christian Bale | 01/01/1980 | Ford vs Ferrari  |
 	| RDJ            | 01/01/1980 | Avengers         |
-	| Chris Evans    | 01/01/1975 | Avengers         |
+	| Chris Evans    | 01/01/1980 | Avengers         |

@@ -4,6 +4,7 @@ using System.Text;
 using System.Linq;
 using IMDBapp.Domain;
 using IMDBapp.Repository;
+using System.Globalization;
 
 namespace IMDBapp
 {
@@ -61,20 +62,21 @@ namespace IMDBapp
         }
 
         //Actors
-        public void AddActor(string actorName, string actorDob)
+        public void AddActor(string actorName, string dob)
         {
+
+            DateTime dDate, actorDob;
 
             if (string.IsNullOrEmpty(actorName))
             {
-                throw new ArgumentException("Actor name can't be empty!");
+                throw new Exception("Actor name can't be empty!");
             }
 
-            
-            DateTime dDate;
 
-            if (DateTime.TryParse(actorDob, out dDate))
+            if (DateTime.TryParse(dob, out dDate))
             {
                 String.Format("{0:d/MM/yyyy}", dDate);
+                actorDob = DateTime.ParseExact(dob, "d/M/yyyy", CultureInfo.InvariantCulture);
             }
             else
             {
@@ -97,20 +99,20 @@ namespace IMDBapp
         }
 
         //Producers
-        public void AddProducer(string producerName, string producerDob)
+        public void AddProducer(string producerName, string dob)
         {
+
+            DateTime dDate, producerDob;
 
             if (string.IsNullOrEmpty(producerName))
             {
                 throw new ArgumentException("Actor name can't be empty!");
             }
 
-
-            DateTime dDate;
-
-            if (DateTime.TryParse(producerDob, out dDate))
+            if (DateTime.TryParse(dob, out dDate))
             {
                 String.Format("{0:d/MM/yyyy}", dDate);
+                producerDob = DateTime.ParseExact(dob, "d/M/yyyy", CultureInfo.InvariantCulture);
             }
             else
             {

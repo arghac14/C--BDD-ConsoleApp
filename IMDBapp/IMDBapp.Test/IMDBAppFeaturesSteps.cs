@@ -38,8 +38,8 @@ namespace IMDBapp.Test
         public void AddingInitialData()
         {
             _imdbservice.AddActor("Matt Damon", "01/01/1980");
-            _imdbservice.AddActor("Christian Bale", "01/01/1975");
-            _imdbservice.AddProducer("James Mangold", "01/01/1985");
+            _imdbservice.AddActor("Christian Bale", "01/01/1980");
+            _imdbservice.AddProducer("James Mangold", "01/01/1980");
             _imdbservice.AddProducer("PC1", "03/03/2001");
         }
 
@@ -67,14 +67,16 @@ namespace IMDBapp.Test
             var temp_actors_obj = _imdbservice.GetAllActors();
             List<int> actorsindex = new List<int>();
             var actorList = actorIndices.Split(' ').ToList();
-            foreach (var i in actorList)
+            
+            actorList.ForEach(i =>
             {
                 actorsindex.Add(Convert.ToInt32(i));
-            }
-            foreach (var i in actorsindex)
+            });
+
+            actorsindex.ForEach(i =>
             {
                 _actors.Add(temp_actors_obj[i - 1]);
-            }
+            });
 
         }
 
@@ -102,15 +104,25 @@ namespace IMDBapp.Test
             var _year1 = "2019";
             var _plot1 = "American Car Movie";
             List<Actor> _actors1 = new List<Actor>();
+
+            DateTime _dob = new DateTime();
+            string _date= "01/01/1980";
+            var date = DateTime.MinValue;
+            if (DateTime.TryParse(_date, out date))
+            {
+                //Sucess...
+                _dob = date;
+            }
+
             var _actor1 = new Actor()
             {
                 Name = "Matt Damon",
-                DOB = "01/01/1980"
+                DOB = _dob
             };
             var _actor2 = new Actor()
             {
                 Name = "Christian Bale",
-                DOB = "01/01/1975"
+                DOB = _dob
              };
 
             _actors1.Add(_actor1);
@@ -119,7 +131,7 @@ namespace IMDBapp.Test
             var _producer1 = new Producer()
             {
                 Name = "James Mangold",
-                DOB = "01/01/1985"
+                DOB = _dob
             };
 
             _imdbservice.AddMovie(_movieName1, _year1, _plot1, _actors1, _producer1);
@@ -131,12 +143,12 @@ namespace IMDBapp.Test
             var _actor3 = new Actor()
             {
                 Name = "RDJ",
-                DOB = "01/01/1980"
+                DOB = _dob
             };
             var _actor4 = new Actor()
             {
                 Name = "Chris Evans",
-                DOB = "01/01/1975"
+                DOB = _dob
             };
 
             _actors2.Add(_actor1);
@@ -145,7 +157,7 @@ namespace IMDBapp.Test
             var _producer2 = new Producer()
             {
                 Name = "Kevin Feigi",
-                DOB = "01/01/1985"
+                DOB = _dob
             };
 
             _imdbservice.AddMovie(_movieName2, _year2, _plot2, _actors2, _producer2);

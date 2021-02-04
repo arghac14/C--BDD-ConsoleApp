@@ -144,22 +144,22 @@ this.ScenarioInitialize(scenarioInfo);
                             "Name",
                             "DOB"});
                 table2.AddRow(new string[] {
-                            "Matt Damon",
+                            "James Mangold",
                             "01/01/1980"});
-                table2.AddRow(new string[] {
-                            "Christian Bale",
-                            "01/01/1975"});
 #line 15
- testRunner.Then("actor list should be-", ((string)(null)), table2, "Then ");
+ testRunner.Then("producer list should be-", ((string)(null)), table2, "Then ");
 #line hidden
                 TechTalk.SpecFlow.Table table3 = new TechTalk.SpecFlow.Table(new string[] {
                             "Name",
                             "DOB"});
                 table3.AddRow(new string[] {
-                            "James Mangold",
-                            "01/01/1985"});
-#line 19
- testRunner.Then("producer list should be-", ((string)(null)), table3, "Then ");
+                            "Matt Damon",
+                            "01/01/1980"});
+                table3.AddRow(new string[] {
+                            "Christian Bale",
+                            "01/01/1980"});
+#line 18
+ testRunner.Then("actor list should be-", ((string)(null)), table3, "Then ");
 #line hidden
             }
             this.ScenarioCleanup();
@@ -175,7 +175,7 @@ this.ScenarioInitialize(scenarioInfo);
                     "list-movies"};
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("List all movies", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
-#line 24
+#line 25
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -195,7 +195,7 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-#line 25
+#line 26
  testRunner.When("all movies are fetched", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
                 TechTalk.SpecFlow.Table table4 = new TechTalk.SpecFlow.Table(new string[] {
@@ -210,7 +210,7 @@ this.ScenarioInitialize(scenarioInfo);
                             "Avengers",
                             "2019",
                             "American Sci-Fi Movie"});
-#line 26
+#line 27
  testRunner.Then("movie list should be-", ((string)(null)), table4, "Then ");
 #line hidden
                 TechTalk.SpecFlow.Table table5 = new TechTalk.SpecFlow.Table(new string[] {
@@ -219,13 +219,13 @@ this.ScenarioInitialize(scenarioInfo);
                             "Movie"});
                 table5.AddRow(new string[] {
                             "James Mangold",
-                            "01/01/1985",
+                            "01/01/1980",
                             "Ford vs Ferrari"});
                 table5.AddRow(new string[] {
                             "Kevin Feigi",
-                            "01/01/1985",
+                            "01/01/1980",
                             "Avengers"});
-#line 31
+#line 32
  testRunner.Then("producer list should show-", ((string)(null)), table5, "Then ");
 #line hidden
                 TechTalk.SpecFlow.Table table6 = new TechTalk.SpecFlow.Table(new string[] {
@@ -238,7 +238,7 @@ this.ScenarioInitialize(scenarioInfo);
                             "Ford vs Ferrari"});
                 table6.AddRow(new string[] {
                             "Christian Bale",
-                            "01/01/1975",
+                            "01/01/1980",
                             "Ford vs Ferrari"});
                 table6.AddRow(new string[] {
                             "RDJ",
@@ -246,9 +246,9 @@ this.ScenarioInitialize(scenarioInfo);
                             "Avengers"});
                 table6.AddRow(new string[] {
                             "Chris Evans",
-                            "01/01/1975",
+                            "01/01/1980",
                             "Avengers"});
-#line 36
+#line 37
  testRunner.Then("actor list should show-", ((string)(null)), table6, "Then ");
 #line hidden
             }
