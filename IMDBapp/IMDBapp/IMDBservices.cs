@@ -11,12 +11,14 @@ namespace IMDBapp
     public class IMDBservices
     {
         private readonly MovieRepository _movieRepository;
-        
+        private readonly ActorRepository _actorRepository ;
+        private readonly ProducerRepository _producerRepository;
 
-        
         public IMDBservices()
         {
             _movieRepository = new MovieRepository();
+            _actorRepository = new ActorRepository();
+            _producerRepository = new ProducerRepository();
         }
         
         // Movies
@@ -90,12 +92,12 @@ namespace IMDBapp
                 DOB = actorDob
             };
 
-            _movieRepository.AddActorData(actor);
+            _actorRepository.AddActorData(actor);
         }
 
         public List<Actor> GetAllActors()
         {
-            return _movieRepository.GetActorsData();
+            return _actorRepository.GetActorsData();
         }
 
         //Producers
@@ -125,12 +127,12 @@ namespace IMDBapp
                 Name = producerName,
                 DOB = producerDob
             };
-            _movieRepository.AddProducerData(producer);
+            _producerRepository.AddProducerData(producer);
         }
 
         public List<Producer> GetAllProducers()
         {
-            return _movieRepository.GetProducersData();
+            return _producerRepository.GetProducersData();
         }
 
         public void DeleteByID(int id)

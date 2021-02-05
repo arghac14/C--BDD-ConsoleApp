@@ -204,13 +204,12 @@ namespace IMDBapp.Test
 
             actorToMovie = new List<ActorToMovie> { _actortomovie1, _actortomovie2, _actortomovie3, _actortomovie4 };
             producerToMovie = new List<ProducerToMovie> { _producertomovie1, _producertomovie2};
-
         }
 
         [When(@"all movies are fetched")]
         public void WhenAllMoviesAreFetched()
         {
-            _imdbservice.GetAllMovies();
+            movieList = _imdbservice.GetAllMovies().ToList();
         }
 
         [Then(@"movie list should be-")]

@@ -30,7 +30,7 @@ Scenario: List all movies
 	| Avengers         | 2019   | American Sci-Fi Movie |
 
 	Then producer list should show-
-	| Producer          | DOB        | Movie       |
+	| Producer          | DOB    | Movie           |
 	| James Mangold | 01/01/1980 | Ford vs Ferrari |
 	| Kevin Feigi   | 01/01/1980 | Avengers        |
 	

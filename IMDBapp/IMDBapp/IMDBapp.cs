@@ -289,43 +289,58 @@ namespace IMDBapp
 
             int choice;
             IMDBservices imdb = new IMDBservices();
-
-            while (true)
-            {
-                Console.ForegroundColor = ConsoleColor.White;
-                Console.WriteLine("\t\t\t\t\t|_____________IMDB________________|");
-                Console.WriteLine("\t\t\t\t\t|          1. Add Movie           |");
-                Console.WriteLine("\t\t\t\t\t|          2. List Movies         |");
-                Console.WriteLine("\t\t\t\t\t|          3. Add Actor           |");
-                Console.WriteLine("\t\t\t\t\t|          4. Add Producer        |");
-                Console.WriteLine("\t\t\t\t\t|          5. Delete Movie        |");
-                Console.WriteLine("\t\t\t\t\t|          6. Exit                |");
-                Console.WriteLine("\t\t\t\t\t|_________________________________|");
-                Console.Write("\nChoose any option and press Enter: ");
-
-                choice = Convert.ToInt32(Console.ReadLine());
-
-                switch (choice)
+           
+                while (true)
                 {
-                    case 1: AddMovieToIMDB(imdb);
+                try
+                {
+                    Console.ForegroundColor = ConsoleColor.White;
+                    Console.WriteLine("\t\t\t\t\t _______________IMDB______________");
+                    Console.WriteLine("\t\t\t\t\t|          1. Add Movie           |");
+                    Console.WriteLine("\t\t\t\t\t|          2. List Movies         |");
+                    Console.WriteLine("\t\t\t\t\t|          3. Add Actor           |");
+                    Console.WriteLine("\t\t\t\t\t|          4. Add Producer        |");
+                    Console.WriteLine("\t\t\t\t\t|          5. Delete Movie        |");
+                    Console.WriteLine("\t\t\t\t\t|          6. Exit                |");
+                    Console.WriteLine("\t\t\t\t\t|_________________________________|");
+                    Console.Write("\nChoose any option and press Enter: ");
+
+                    choice = Convert.ToInt32(Console.ReadLine());
+
+                    switch (choice)
+                    {
+                        case 1:
+                            AddMovieToIMDB(imdb);
                             break;
-                    case 2: ListMovies(imdb);
+                        case 2:
+                            ListMovies(imdb);
                             break;
-                    case 3: AddActorToIMDB(imdb);
+                        case 3:
+                            AddActorToIMDB(imdb);
                             break;
-                    case 4: AddProducerToIMDB(imdb);
+                        case 4:
+                            AddProducerToIMDB(imdb);
                             break;
-                    case 5: DeleteMovie(imdb);
+                        case 5:
+                            DeleteMovie(imdb);
                             break;
-                    case 6:
+                        case 6:
                             System.Environment.Exit(0);
                             break;
-                    default: break;
+                        default: break;
 
+                    }
                 }
+                catch(Exception e)
+                {
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("\nInvalid Input! \n\n{0}", e.Message);
+                    ResetConsoleColour();
+                    continue;
+                    
+                }
+             }
+         }
 
-            }
-
-        }
     }
 }
